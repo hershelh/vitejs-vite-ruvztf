@@ -1,10 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import { Form, Field, CellGroup } from 'vant';
-import './style.css';
+import vant from "vant"
 
 const app = createApp(App);
-app.use(Form);
-app.use(Field);
-app.use(CellGroup);
+app.use(vant)
 app.mount('#app');

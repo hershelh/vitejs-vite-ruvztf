@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 
-const login = async () => {
-  return Promise.resolve();
-};
-
 const loginForm = reactive({
   username: '',
   password: '',
@@ -14,12 +10,7 @@ const isSubmitButtonDisabled = ref(false);
 
 const submitLogin = async () => {
   isSubmitButtonDisabled.value = true;
-  try {
-    const { token } = await login(loginForm);
-  } catch {
-    isSubmitButtonDisabled.value = false;
-  }
-};
+}
 </script>
 
 <template>

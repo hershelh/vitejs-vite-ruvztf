@@ -1,14 +1,19 @@
-import { test, vi } from 'vitest';
-import { fireEvent, render, waitFor } from '@testing-library/vue';
+import { it } from 'vitest';
+import { fireEvent, render } from '@testing-library/vue';
 import Form from './Form.vue';
+import vant from "vant"
 
-test('it would fail', async () => {
-  const { getByPlaceholderText, getByTestId, getByText } = render(Form);
-  getByText('false');
+it('should fail if submit the form', async () => {
+  const { getByPlaceholderText, getByTestId, getByText, debug } = render(Form, {
+    global: {
+      plugins: [vant]
+    }
+  });
+  getByText('false');// this will pass
 
-  await fireEvent.update(getByPlaceholderText('username'), 'jeanmay');
-  await fireEvent.update(getByPlaceholderText('password'), 'password123456');
+  await fireEvent.update(getByPlaceholderText('username'), 'user');
+  await fireEvent.update(getByPlaceholderText('password'), 'psw');
   await fireEvent.submit(getByTestId('form'));
-
-  getByText('true');
+  
+  getByText('true')// this will fail. But if replace waitFor() with flushPromises() in fireEvent(), the test will pass.
 });

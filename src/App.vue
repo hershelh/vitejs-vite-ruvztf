@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Form />
-    1231
   </div>
 </template>
 
